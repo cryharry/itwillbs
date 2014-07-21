@@ -1,5 +1,5 @@
 
-public class test3 {
+public class Test3 {
 	public static void main(String[] args) {
 	/**	연산자 왼쪽 => 오른쪽 우선순위 괄호()
 		변수 = 식

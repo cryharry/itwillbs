@@ -1,5 +1,5 @@
 
-public class test2 {
+public class Test2 {
 	public static void main(String[] args) {
 		//-----------자료형 형변환---------------
 		//자동 형변환	큰기억장소 = 작은기억장소
