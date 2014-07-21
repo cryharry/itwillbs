@@ -19,8 +19,8 @@ public abstract class test1 {
 		
 		char ch = 'A';
 		String str = "안녕하세요";
-		System.out.printf("문자:%c\n", ch);
-		System.out.printf("문자열:%s\n", str);
+		System.out.printf("문자:%c \n", ch);
+		System.out.printf("문자열:%s \n", str);
 		
 	}
 }

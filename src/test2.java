@@ -4,11 +4,11 @@ public class test2 {
 		//-----------자료형 형변환---------------
 		//자동 형변환	큰기억장소 = 작은기억장소
 		double a;
-		a = 7; //double  = int
+		a = 7; //double  = int 값 =>자동형변환
 		System.out.println("a="+a); //7.0
 		
 		int c;
-		c = 'D'; //int 변수 = char값
+		c = 'D'; //int 변수 = char 값 =>자동형변환
 		System.out.println("c=" +c); //68
 		
 		char ch;
@@ -18,7 +18,7 @@ public class test2 {
 		//명시적 형변환		작은 = (작게)큰
 		int b;
 		b = (int)3.4; //int 변수 = (int)double값
-		System.out.println("b=" +b);
+		System.out.println("b=" +b); //3
 		
 		//-------printf로 char형 => int형으로 표현하기--------
 		ch = 'A';
