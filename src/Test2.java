@@ -63,12 +63,55 @@ public class Test2 {
 */
 		a = -5;
 		//양수	영	음수
-		if(a>0) {
+		if(a > 0) {
 			System.out.println("양수");
-		} else if(a ==0) {
+		} else if(a == 0) {
 			System.out.println("영");
-		} else {
+		} else { //a < 0
 			System.out.println("음수");
 		}
+		
+		a = 85; // {a>=90 A} {90<a>=80 B} {80<a>=70 C} {70<a>=60 D} {a<60 F}
+		if( a >= 90) {
+			System.out.println("A학점");
+		} else if (a < 90 && a >= 80) {
+			System.out.println("B학점");
+		} else if (a < 80 && a >= 70) {
+			System.out.println("C학점");
+		} else if (a < 70 && a >= 60) {
+			System.out.println("D학점");
+		} else {
+			System.out.println("F학점");
+		}
+		
+/*		if(조건) {
+			//조건 참 실행문
+			if(조건2) {
+				//조건 참 조건2 참
+			} else {
+				//조건 참 조건2 거짓
+			}
+		} else {
+			//조건 거짓 실행문
+		}
+*/
+		a = 93;
+		String grade="";
+		// A 90점이상 94~97 (98점이상 A+ 98~100 94점미만 A- 90~93)
+		// B 80점이상
+		if(a >= 90) {
+			//A
+			grade = "A";
+			if(a >= 98){
+				//A+
+				grade = "A+학점";
+			} else if(a < 94){
+				//A-
+				grade = "A-학점";
+			}
+		} else if(a >= 80){ //B
+			grade = "B학점";
+		}
+		System.out.println("학점: "+grade);
 	}//메인메서드
 }//클래스
