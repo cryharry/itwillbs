@@ -18,7 +18,7 @@ public class Test1 {
 		height = 186; weight = 73;
 		dheight = height/100.0;
 		dheight *= dheight;
-		bmi = (weight/dheight);
+		bmi = weight/dheight;
 		if(bmi >= 30.0) {
 			System.out.println("고도비만");
 		} else if(bmi >= 25.0 && bmi < 30.0) {
