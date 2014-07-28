@@ -48,16 +48,17 @@ public class Test1 {
 			System.out.print(i+ " ");
 			i--;
 		} while(i>=1);
-		System.out.println();
+		System.out.println("------------------------------");
 		
 		// 1 ~ 1 2 3 ... 100까지의 합
 		i = 1; sum = 0;
 		do {
 			sum += i;
-			if( i%10 == 0 )
+			if( i%10 == 0 ) //10의 배수만 출력
 				System.out.println("1~"+i+"까지의 합: " +sum);
 			i++;
 		} while(i <= 100);
+		System.out.println("------------------------------");
 		
 		// for 0 ~ 100보다 작은 수 중
 		// if 3과 4의 공배수 출력( 3으로 나누어 떨어지고 4로 나누어 떨어지는 수 )
@@ -66,6 +67,7 @@ public class Test1 {
 				System.out.println("0 ~ 100 중에 3과 4의 공배수는:" +i);
 			}
 		}
+		System.out.println("------------------------------");
 		
 		// 1 ~ 10 홀수의 합: 짝수의 합:
 		int oddsum = 0, evensum = 0;

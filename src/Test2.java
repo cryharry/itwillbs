@@ -12,6 +12,7 @@ public class Test2 {
 				System.out.println();
 			}
 		}
+		System.out.println("------------------------------");
 		
 		// 구구단
 		System.out.println("구구단");
@@ -25,12 +26,13 @@ public class Test2 {
 				} 
 			}
 		}
+		System.out.println("------------------------------");
 		
 		// for 출력 5번 반복 *****
 		for(int r=1; r<=5; r++) { //행
 			for(i=1; i<=5; i++)System.out.print("*"); //열
-			System.out.println();
 		}
+		System.out.println("------------------------------");
 /*		
 		*
 		**
@@ -41,8 +43,8 @@ public class Test2 {
 		for(int r=1; r<=5; r++) {
 			for(i=1; i<=r; i++)
 				System.out.print("*");
-			System.out.println();
 		}
+		System.out.println("------------------------------");
 /*		
 		2*1=2	3*1=3	4*1=4 ... 9*1=9
 		2*2=4	3*2=3	4*2=4 ... 9*2=9
@@ -50,8 +52,8 @@ public class Test2 {
 		...
 		2*9=18	3*9=27	4*9=36 .. 9*9=81
 */
-		for( i=1; i<=9; i++){
-			for( j=2; j<=9; j++){
+		for( i=1; i<=9; i++){//행
+			for( j=2; j<=9; j++){//열
 				System.out.print(j+"*"+i+"="+j*i+"\t");
 			}
 			System.out.println();
