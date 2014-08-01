@@ -7,7 +7,7 @@ public class Test1 {
 		int a[][] = new int[5][3]; //int[행][열]
 		System.out.println("a[0][0]: "+a[0][0]);
 		
-		int temp = 10;
+		int temp = 10; //배열안의 증가값을 넣을 변수
 		for(int i=0; i<a.length; i++) {
 			for(int j=0; j<a[i].length; j++) {//2차원배열의 길이를 구할려면 1차원배열.length로 구함
 				a[i][j] = temp; 
@@ -17,11 +17,14 @@ public class Test1 {
 			System.out.println();
 		}
 		System.out.println("----------------------------------------");
-		int b[][] = {{10,20}, {30,40}, {50,60}};
+		temp = 10;
+		int b[][] = new int[3][2];
 		System.out.print("행: "+b.length+ "개\t");
 		System.out.println("열: "+b[0].length+"개");
 		for(int i=0; i<b.length; i++) {
 			for(int j=0; j<b[i].length; j++){
+				b[i][j] = temp;
+				temp += 10;
 				System.out.print("b["+i+"]["+j+"]:"+b[i][j]+"\t");
 			}System.out.println();
 		}

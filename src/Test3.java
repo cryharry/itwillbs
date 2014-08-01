@@ -25,6 +25,7 @@ public class Test3 {
 			sum = 0;
 		}
 
+		// for와 Math.random()을 이용한 학생들 점수 구하기
 		System.out.println("--------국어-----수학-----영어-----총점-------평균--------");
 		int hak[][] = new int[5][3];
 		int ranover = 0;
