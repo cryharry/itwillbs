@@ -16,12 +16,41 @@ public class Test3 {
 		}
 		return sum;
 	}
-	// 배열 + Math.random() 혼합 사용자 함수
+	// 2차원 배열 + Math.random() 혼합 사용자 함수
 	public static void arrayMethod(int a[][]) {
+		int temp = 0;
 		for(int i=0; i<a.length; i++) {
 			for(int j=0; j<a[i].length; j++) {		
 				a[i][j] = (int)(Math.random()*10)+1;//1~10중 랜덤한 숫자 배열에 입력
-				System.out.println("a["+i+"]["+j+"]:"+a[i][j]); 
+				System.out.println("a["+i+"]["+j+"]:"+a[i][j]);
+			}
+		}
+		System.out.println("------------------------------");
+		// 2차원 배열 1차 내림차순 정렬 함수
+		for(int i=0; i<a.length; i++) {
+			for(int j=0; j<a[i].length; j++) {
+				for(int k=j+1; k<a[i].length; k++) { //1차 내림차순 정렬 for문
+					if(a[i][j] < a[i][k]) {
+						temp = a[i][k];
+						a[i][k] = a[i][j];
+						a[i][j] = temp;
+					}
+				}
+/*				for(int k=j+1; k<a.length; k++) {
+					for(int l=0; l<a[i].length; l++){
+						if(a[i][j] < a[k][l]) {
+							temp = a[k][l];
+							a[k][l] = a[i][j];
+							a[i][j] = temp;
+						}
+						if(a[i][k] < a[k][l]) {
+							temp = a[k][l];
+							a[k][l] = a[i][k];
+							a[i][k] = temp;
+						}
+					}
+				}*/
+				System.out.println("a["+i+"]["+j+"]:"+a[i][j]);
 			}
 		}
 	}
