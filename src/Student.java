@@ -5,6 +5,10 @@ public class Student {
 	int kor; // 국어점수 정수형
 	int eng; // 영어점수 정수형
 	int math; // 수학점수 정수형
+	//기본 생성자
+	Student() {
+		System.out.println("Student 기본생성자");
+	}
 	
 	void setStudent(int hakbun, String name, int kor, int eng, int math) {
 		this.hakbun = hakbun;
