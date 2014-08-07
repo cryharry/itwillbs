@@ -4,12 +4,8 @@ public class Point {
 	int x, y, z;
 	// 기본 생성자 => x y z를 받는 생성자 호출 1 1 1
 	Point() {
-		
-	}
-	Point(int x) {
 		this(1, 1, 1);
 	}
-	
 	// x y z 받는 생성자
 	Point(int x, int y, int z) {
 		this.x = x;
