@@ -27,7 +27,8 @@ class Person {
 
 class PersonList {
 	List<Person> AllPerson() {
-		List<Person> list = new ArrayList<Person>();
+		// List list = new ArrayList();
+		List<Person> list = new ArrayList<Person>(); // Generic
 		
 		Person p1 = new Person();
 			p1.setName("홍길동");
@@ -56,7 +57,9 @@ public class Test7 {
 		PersonList plist = new PersonList();
 		List<Person> list = plist.AllPerson();
 		for( int i=0; i<list.size(); i++ ) {
-			Person p = (Person)list.get(i);
+			//Person p = (Person)list.get(i); //다운캐스팅
+			// Generic
+			Person p = list.get(i); // 형변환없이 저장
 			System.out.print("이름: "+ p.getName() 
 							+ ", 나이: " + p.getAge() 
 							+ ", 주소: " + p.getAddress());

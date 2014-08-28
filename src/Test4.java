@@ -10,7 +10,11 @@ public class Test4 {
 		set.add(2.5);
 		set.add("삼");
 		System.out.println(set);
-		// List : <ArrayList>, <Vector> 순서있는 여러형저장
-		// Map : <HashMap>, <Hashtable> 키(이름), 값
+		/* List : <ArrayList>, <Vector> 순서있는 여러형저장
+		=> ArrayList : Test6 ~ Test8 class
+		=> Vector, Enum, Iterator, Enumeration : Test9 class
+		Map : <HashMap>, <Hashtable> 키(이름), 값
+		=> Hashtable : Test10 class
+		*/
 	}
 }
