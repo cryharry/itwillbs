@@ -1,37 +1,49 @@
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
 class MemberMan extends JFrame implements ActionListener{
-	JPanel p1,p2,p3,p4,p5,panWest;
+	JPanel pNorth,p1,p2,p3,p4,p5,panWest;
 	JTextField txtNo,txtName,txtEmail,txtTel;
 	JButton btnTotal,btnAdd,btnDel;
 	JTable table;
+	JRadioButton rButton1;
+	JComboBox cb1;
 	
 	Connection con=null;
-	String url="jdbc:mysql://localhost:3306/test";
+	String url="jdbc:mysql://localhost:3306/sinyoung";
 	String user="root";
-	String pwd="root";
+	String pwd="mysql";
 	PreparedStatement pstmtInsert,pstmtDelete,pstmtSelect,pstmtSelectRow;
 	ResultSet rs,rsRow;
 	ResultSetMetaData rsmd;
-	String sql="";
+	String sql="", combo[] = {"부산광역시","울산광역시","그외"};
 	
 	public MemberMan() {
+		pNorth = new JPanel(new FlowLayout());
+		pNorth.add(cb1 = new JComboBox<String>(combo));
+		add(pNorth, "North");
+		
 		//배치 GridLayout(5,1)
 		panWest=new JPanel(new GridLayout(4,1));
 		//판넬 p1 번호 txtNo
@@ -66,6 +78,7 @@ class MemberMan extends JFrame implements ActionListener{
 		setSize(700, 300);
 		setVisible(true);
 		//이벤트
+		cb1.addActionListener(this);
 		btnTotal.addActionListener(this);
 		btnAdd.addActionListener(this);
 		btnDel.addActionListener(this);
@@ -88,10 +101,10 @@ class MemberMan extends JFrame implements ActionListener{
 		Object[][] data; //데이터
 		try {
 			//3단계 select 
-			sql="select * from customer";
+			sql="select * from sch_info";
 			pstmtSelect=con.prepareStatement(sql);
 			pstmtSelectRow=con.prepareStatement(sql);
-			//4단계 rs<=실행 저장
+			//4단계 rs<=실행 저장 
 			rs=pstmtSelect.executeQuery();//데이터
 			rsRow=pstmtSelectRow.executeQuery();//행
 			//행
@@ -157,6 +170,50 @@ class MemberMan extends JFrame implements ActionListener{
 	public void del(){
 		
 	}
+	public void gu_search(String str) {
+		int rows,cols;//행,열 개수
+		String[] columnName;//열이름
+		Object[][] data; //데이터
+		try {
+			//3단계 select
+			sql="select * from sch_info where address1='"+str+"';";
+			pstmtSelect=con.prepareStatement(sql);
+			pstmtSelectRow=con.prepareStatement(sql);
+			//4단계 rs<=실행 저장
+			rs=pstmtSelect.executeQuery();//데이터
+			rsRow=pstmtSelectRow.executeQuery();//행
+			//행
+			rsRow.last();
+			rows=rsRow.getRow();
+			//열
+			rsmd=rs.getMetaData();
+			cols=rsmd.getColumnCount();
+			//열이름
+			columnName=new String[cols];
+			for(int i=0;i<columnName.length;i++){
+				columnName[i]=rsmd.getColumnName(i+1);
+			}
+			//데이터
+			data=new Object[rows][cols];
+			for(int r=0;r<rows;r++){ //행
+				rs.next();
+				for(int c=0;c<cols;c++){ //열
+					data[r][c]=rs.getObject(c+1);	
+				}
+			}
+			//Jtable생성(데이터,열이름) 붙이기
+			table=new JTable(data,columnName);
+			add(new JScrollPane(table),"Center");
+			//화면보이기
+			setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(pstmtSelect!=null)try{pstmtSelect.close();}catch(Exception e){e.printStackTrace();}
+			if(pstmtSelectRow!=null)try{pstmtSelectRow.close();}catch(Exception e){e.printStackTrace();}
+			if(rs!= null)try{rs.close();} catch(SQLException e){e.printStackTrace();}
+		}
+	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(btnTotal==e.getSource()){
@@ -165,9 +222,13 @@ class MemberMan extends JFrame implements ActionListener{
 			add();
 		}else if(e.getSource()==btnDel){
 			del();
+		} else if(e.getSource() == cb1) {
+			String str = (String)cb1.getSelectedItem();
+			gu_search(str);
 		}
 	}
 }
+
 public class Test2 {
 	public static void main(String[] args) {
 		MemberMan m=new MemberMan();

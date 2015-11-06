@@ -1,16 +1,16 @@
+import java.net.URLEncoder;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 
-
 public class Test1 {
 	public static void main(String[] args) {
 		Connection con=null;
-		String url="jdbc:mysql://localhost:3306/test";
+		String url="jdbc:mysql://localhost:3306/nari";
 		String user="root";
-		String pwd="root";
+		String pwd="mysql";
 		PreparedStatement pstmt=null;
 		String sql="";
 		ResultSet rs=null;
@@ -21,7 +21,7 @@ public class Test1 {
 			//2단계 디비연결
 			con=DriverManager.getConnection(url,user,pwd);
 			//3단계 sql
-			sql="select * from customer";
+			sql="select * from g4_write_schedule_mk_4";
 			pstmt=con.prepareStatement(sql);
 			//4단계 실행 => rs
 			rs=pstmt.executeQuery();
@@ -36,7 +36,7 @@ public class Test1 {
 			System.out.println("행개수:"+rows);
 			//열제목 출력
 			for(int i=1;i<=cols;i++){
-				System.out.print(rsmd.getColumnName(i)+"\t\t");
+				System.out.print(rsmd.getColumnName(i)+"\t\t");			
 			}
 			System.out.println("\n");
 			//5단계 rs=>출력
